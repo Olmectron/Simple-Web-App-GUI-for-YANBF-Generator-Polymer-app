@@ -221,9 +221,29 @@ return camino;
  
       var context=this;
 
-      var fileSplit=e.target.files[0].path.split("\\");
+      var file=e.target.files[0];
+      console.log("FIle!",file);
+      
+
+
+
+
+      var splitterString="/";
+      if(file.path.indexOf("\\")>-1){
+        splitterString="\\";
+      }
+
+      var fileSplit=e.target.files[0].path.split(splitterString);
+
+
       fileSplit.splice(fileSplit.length-1,1);
-      var pathFinal=fileSplit.join("\\");
+      var pathFinal=fileSplit.join(splitterString);
+
+
+
+
+
+
       console.log("File DIR",pathFinal);
       LocalStoreQuery.set("directoryPath",pathFinal);
 
